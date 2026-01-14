@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "babyapp-bade7",
+  "private_key_id": "c42c711013d6d1e0112d664e398fcceb39b16ac1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDlnIePikBFHFsH\n1VtS47jf3exHnfgak7oSynwFovIIhAcRAyrJb4ptMg42SKclokYVBst9n5sRTvuO\nyb7a/Gbc/pLEitI5hP/xzZQjXUVT646Ke4MohJE3SEog2FprXjhNY/5IWzQFDrLa\nhtnd8to9ZsQmYoUOqnDSSTHzbw0aCYdDW6Q8RuhS9ARNV04XxmCzniIahZvQDQIJ\nXZ1cNVl0XoEEpNK/pHLz8ZZ967XuDQ9F00T3L9PuDMoZKcW3wLROt2qWTyW8i0In\nsSqN1c8CLmtUyyvnBoMtEHig9FKWKMJw3bQ3cCTiQIZEeUy6UClRaM1fnxsYMHii\nWVCtgEmDAgMBAAECggEAW+VldgQBjAd4wW5ZYhflFqgV2GX3df+Y8ctbjs/z6YeZ\n4muvlLZRIzns6Tnzt8K2JNU23TzjTa6cTL4e5jstmhZDPGlJER9TZn3+Y5cBV8CH\nqJIdYLqJ+iOzE2kz6xPnGcZC78eczsdeuspM6SE4ymlWaPx2P3Pkuqzz0neoOTpD\n9IHdcGrhC46VrDquz8PsTvMURbp4yUpIepdjgoueqf7GjhH3dQi2DCcAZruh3e29\nMp4OVA7PZprgn3imke2TG1UBrTLorey6z26HI2/23DXIsrHY05tU8dna3UOUpnnU\nnrweicge5aZwiZm558R5sBJ1A6u9dzvLO7DeMRXhgQKBgQD1gf0pcNtm52e8dd0t\nq3cS8vIljUwwil6BSN87H6d4svyja+ytcw9CftiwH9H8fnbbEEb5P2IZMQzZInyu\nM82Ed61YV/7C4A9VASSdB/QRqHWjkBY8idnJd7/e7Et8aeHFktI3GkkaV7wFMIrb\nC2WRMRdtcpG7ehmlBDx47y9EgQKBgQDvbJ/tBx5oIe/Plyy4PE2L09YxBffA6yWu\nAWJlXEIg5uK8d710cqjnWLg2PbxpsjFeAz4UYy2cs+QWwDtvrADrOmPjOjvGNIAs\nr8a4xRdpcSi2vgVO9XGgK1+xMSYd6c6WYb54SdyNFBdgM23j4BfkDwCQ4EOfhrsf\nOUB2iMR8AwKBgAKbdszR3gKhwoBF4Ctz/re8zMWJUp3RWl+VHonKNEUb4YL6ynCt\nICRcpIB6VgiQb0K0UYykF66czr4fl6Nh+XTGsJiXlqULLB6C/JiOVRE68MTj6tiJ\nvj5dfzQm3kZb+YHXpVPge5ZECEMl2NOqs1FvbAhFhzaufUc7XEkMgTwBAoGAEkQv\nT14jq74rFaNq/gNbxzc6ODNEW6uVDFl+sE0BnpD+63IXOjMlP8E9DKZZIZc+vPVy\nXwvSBwqSdEnmPvbYexnRVRy0QsLupHokpyQiTSEdAhQtQ4DmUln8yv/88HtOD5sV\ndQftk7XcsrI5yBDowbWDTYpOnnUhAZjUmjaFBxECgYBnE7uOzamoiOYKVBJTDfh/\nesrBIUFufjlkngkcMs0a0elJXAhi+gIX4Qf6ZXNQ8JbXHmho3yn/L67dJtZtHSoz\ng6onN/J2dNOeHukA6yoNpOn1hIRMdW40bJof5QrPOFdlGdB/OiCCXNQDrDISu4F4\njQ6Yf1D3G6o1U+d/BJqMgw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@babyapp-bade7.iam.gserviceaccount.com",
+  "client_id": "112063746336666504104",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40babyapp-bade7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

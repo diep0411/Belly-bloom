@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "my_project",
+            "cwd": "my_project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "my_project (profile mode)",
+            "cwd": "my_project",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "my_project (release mode)",
+            "cwd": "my_project",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "babyweb",
+            "cwd": "babyweb\\babyweb",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "babyweb (profile mode)",
+            "cwd": "babyweb\\babyweb",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "babyweb (release mode)",
+            "cwd": "babyweb\\babyweb",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

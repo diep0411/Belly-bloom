@@ -1,0 +1,321 @@
+@startuml Class Diagram - Belly Bloom App
+
+!theme plain
+skinparam classAttributeIconSize 0
+
+' ============================================
+' MODELS LAYER
+' ============================================
+
+class UserAccount {
+  +String name
+  +String email
+  +FormCollection? formCollection
+  +String? uid
+  +fromJson()
+  +toJson()
+  +copyWith()
+}
+
+class FormCollection {
+  +int id
+  +double height
+  +int weight
+  +int week
+  +DateTime createdAt
+  +DateTime lastestUpdate
+  +fromJson()
+  +toJson()
+}
+
+class Appointment {
+  +String? id
+  +String title
+  +String description
+  +DateTime dateTime
+  +String? location
+  +AppointmentType type
+  +bool isReminder
+  +int reminderMinutes
+  +String? doctorName
+  +String? notes
+  +DateTime createdAt
+  +DateTime updatedAt
+  +fromJson()
+  +toJson()
+  +get typeDisplayName
+  +get isToday
+  +get isPast
+  +get isUpcoming
+}
+
+enum AppointmentType {
+  KHAM_BENH
+  NHAC_NHO
+  KHAC
+}
+
+class DiaryModel {
+  +String? id
+  +String userId
+  +DateTime date
+  +String content
+  +List<String> imageUrls
+  +DateTime createdAt
+  +DateTime updatedAt
+  +fromJson()
+  +toJson()
+  +get formattedDate
+  +get dayOfWeek
+  +get isToday
+  +get isYesterday
+  +get relativeDate
+}
+
+class BlogModel {
+  +String? id
+  +String title
+  +String subtitle
+  +String content
+  +String imageUrl
+  +DateTime createdAt
+  +DateTime updatedAt
+  +List<int> targetWeeks
+  +fromJson()
+  +toJson()
+  +isForWeek()
+}
+
+class ExerciseModel {
+  +String? id
+  +String title
+  +String description
+  +String content
+  +String imageUrl
+  +String category
+  +String difficulty
+  +int duration
+  +List<String> benefits
+  +List<String> precautions
+  +List<String> equipment
+  +List<String> instructions
+  +List<String> targetWeeks
+  +bool isActive
+  +DateTime createdAt
+  +DateTime updatedAt
+  +fromJson()
+  +toJson()
+  +get categoryDisplayName
+  +get difficultyDisplayName
+  +isSuitableForWeek()
+}
+
+class HealthMetricModel {
+  +String? id
+  +String userId
+  +DateTime date
+  +double? weight
+  +double? height
+  +double? bloodPressureSystolic
+  +double? bloodPressureDiastolic
+  +int? heartRate
+  +String? notes
+  +DateTime createdAt
+  +DateTime updatedAt
+  +fromJson()
+  +toJson()
+  +copyWith()
+}
+
+class ReminderModel {
+  +String? id
+  +int weekNumber
+  +String title
+  +String description
+  +String priority
+  +bool isActive
+  +DateTime createdAt
+  +DateTime updatedAt
+  +fromJson()
+  +toJson()
+  +get priorityDisplayName
+  +get priorityColor
+}
+
+class HandBook {
+  +int id
+  +String title
+  +String content
+}
+
+' ============================================
+' SERVICES LAYER
+' ============================================
+
+class AppointmentService {
+  +{static} getAppointments()
+  +{static} getAppointmentsByType()
+  +{static} addAppointment()
+  +{static} updateAppointment()
+  +{static} deleteAppointment()
+  +{static} getUpcomingAppointments()
+  +{static} searchAppointments()
+}
+
+class DiaryService {
+  +{static} getDiaries()
+  +{static} getDiaryForDate()
+  +{static} uploadImage()
+  +{static} uploadImages()
+  +{static} deleteImage()
+  +{static} addDiary()
+  +{static} updateDiary()
+  +{static} deleteDiary()
+  +{static} saveDiary()
+  +{static} removeImageFromDiary()
+}
+
+class BlogService {
+  +{static} loadBlogs()
+  +{static} loadBlogsForWeek()
+  +{static} searchBlogs()
+}
+
+class ExerciseService {
+  +{static} loadExercises()
+  +{static} loadExercisesForWeek()
+  +{static} loadExercisesByCategory()
+  +{static} loadExercisesByDifficulty()
+  +{static} searchExercises()
+}
+
+class HealthMetricService {
+  +{static} saveHealthMetric()
+  +{static} getHealthMetrics()
+  +{static} getHealthMetricForDate()
+  +{static} deleteHealthMetric()
+}
+
+class ReminderService {
+  +{static} loadReminders()
+  +{static} loadRemindersByWeek()
+}
+
+class AccountService {
+  +{static} login()
+  +{static} getUserAccount()
+  +{static} updateUserCollectionForm()
+  +{static} logout()
+  +{static} updateUserInfo()
+  +{static} updateUserAndFormCollection()
+}
+
+class NotificationService {
+  +{static} initialize()
+  +{static} scheduleAppointmentNotification()
+  +{static} cancelAppointmentNotification()
+  +{static} cancelAllAppointmentNotifications()
+  +{static} rescheduleAllAppointments()
+  +{static} showTestNotification()
+}
+
+class GeminiService {
+  +{static} initialize()
+  +{static} analyzeIntent()
+  +{static} handleIntent()
+  +{static} _getSystemPrompt()
+  +{static} _fallbackIntentAnalysis()
+  +{static} _handleUpcomingAppointments()
+  +{static} _handleCurrentWeek()
+  +{static} _handleExercises()
+  +{static} _handleBlogs()
+  +{static} _handleGeneralChat()
+}
+
+class ChatIntent {
+  +String intent
+  +String action
+  +int? week
+}
+
+' ============================================
+' BASE/COMMON LAYER
+' ============================================
+
+class BaseCommon {
+  -{static} BaseCommon _instance
+  +SharedPreferences prefs
+  +UserAccount userAccount
+  +{static} BaseCommon()
+  +initBaseCommon()
+  +saveUserAccount()
+  +saveAutoLogin()
+  +checkLogin()
+  +clearUserAccount()
+}
+
+' ============================================
+' RELATIONSHIPS
+' ============================================
+
+UserAccount "1" *-- "0..1" FormCollection : contains
+Appointment "1" --> "*" AppointmentType : uses
+
+AppointmentService ..> Appointment : manages
+AppointmentService ..> BaseCommon : uses
+AppointmentService ..> NotificationService : uses
+
+DiaryService ..> DiaryModel : manages
+DiaryService ..> BaseCommon : uses
+
+BlogService ..> BlogModel : manages
+
+ExerciseService ..> ExerciseModel : manages
+
+HealthMetricService ..> HealthMetricModel : manages
+
+ReminderService ..> ReminderModel : manages
+
+AccountService ..> UserAccount : manages
+AccountService ..> FormCollection : manages
+
+NotificationService ..> Appointment : uses
+NotificationService ..> AppointmentService : uses
+
+GeminiService ..> ChatIntent : uses
+GeminiService ..> AppointmentService : uses
+GeminiService ..> BlogService : uses
+GeminiService ..> ExerciseService : uses
+GeminiService ..> BaseCommon : uses
+
+BaseCommon ..> UserAccount : contains
+BaseCommon ..> AccountService : uses
+
+' ============================================
+' EXTERNAL DEPENDENCIES
+' ============================================
+
+package "Firebase" {
+  class FirebaseFirestore
+  class FirebaseAuth
+  class FirebaseStorage
+}
+
+package "Flutter" {
+  class FlutterLocalNotificationsPlugin
+}
+
+AppointmentService ..> FirebaseFirestore : uses
+DiaryService ..> FirebaseFirestore : uses
+DiaryService ..> FirebaseStorage : uses
+BlogService ..> FirebaseFirestore : uses
+ExerciseService ..> FirebaseFirestore : uses
+HealthMetricService ..> FirebaseFirestore : uses
+ReminderService ..> FirebaseFirestore : uses
+AccountService ..> FirebaseFirestore : uses
+AccountService ..> FirebaseAuth : uses
+
+NotificationService ..> FlutterLocalNotificationsPlugin : uses
+
+@enduml
+

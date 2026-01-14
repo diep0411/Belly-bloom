@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "babyapp-bade7",
+          "appId": "1:597292437681:android:f9d654217ee7ea8dc85290",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "babyapp-bade7",
+          "configurations": {
+            "android": "1:597292437681:android:f9d654217ee7ea8dc85290"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

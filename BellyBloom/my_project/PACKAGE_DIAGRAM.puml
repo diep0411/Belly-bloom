@@ -1,0 +1,144 @@
+@startuml
+!theme plain
+allowmixing
+skinparam packageStyle rectangle
+skinparam package {
+    BackgroundColor<<Models>> LightBlue
+    BackgroundColor<<Services>> LightGreen
+    BackgroundColor<<UI>> LightYellow
+    BackgroundColor<<Utils>> LightGray
+    BackgroundColor<<External>> LightCoral
+    BackgroundColor<<Core>> LightPink
+}
+
+package "my_project" <<Core>> {
+    class Main
+    class FirebaseOptions
+}
+
+package "model" <<Models>> {
+    class Appointment
+    class BlogModel
+    class DiaryModel
+    class ExerciseModel
+    class HealthMetricModel
+    class ReminderModel
+    class UserAccount
+    class FormCollection
+}
+
+package "service" <<Services>> {
+    class AppointmentService
+    class BlogService
+    class DiaryService
+    class ExerciseService
+    class GeminiService
+    class HealthMetricService
+    class NotificationService
+    class ReminderService
+}
+
+package "servive" <<Services>> {
+    class AccountService
+    class BaseCommon
+}
+
+package "screen" <<UI>> {
+    class HomePage
+    class AppointmentPage
+    class DiaryPage
+    class ChatPage
+}
+
+package "widgets" <<UI>> {
+    class AppointmentCard
+    class BlogCard
+    class DiaryCard
+}
+
+package "utils" <<Utils>> {
+    class UtilsCommon
+}
+
+package "resoucre" <<Utils>> {
+    class ColorManager
+    class ImageManager
+}
+
+package "Firebase" <<External>> {
+    package "firebase_core" {
+        class Firebase
+    }
+    package "firebase_auth" {
+        class FirebaseAuth
+    }
+    package "cloud_firestore" {
+        class FirebaseFirestore
+    }
+    package "firebase_storage" {
+        class FirebaseStorage
+    }
+}
+
+package "Flutter" <<External>> {
+    package "flutter" {
+        class MaterialApp
+    }
+    package "flutter_local_notifications" {
+        class FlutterLocalNotificationsPlugin
+    }
+    package "shared_preferences" {
+        class SharedPreferences
+    }
+}
+
+package "AI" <<External>> {
+    package "google_generative_ai" {
+        class GenerativeModel
+    }
+}
+
+Main --> FirebaseOptions
+
+model ..> Firebase
+service ..> model
+service ..> servive
+service ..> utils
+service ..> Firebase
+service ..> AI
+
+servive ..> model
+servive ..> Firebase
+servive ..> Flutter
+
+screen ..> model
+screen ..> service
+screen ..> servive
+screen ..> widgets
+screen ..> utils
+screen ..> resoucre
+screen ..> Flutter
+
+widgets ..> model
+widgets ..> Flutter
+
+utils ..> Flutter
+resoucre ..> Flutter
+
+AppointmentService ..> NotificationService
+GeminiService ..> AppointmentService
+GeminiService ..> BlogService
+GeminiService ..> ExerciseService
+GeminiService ..> BaseCommon
+
+DiaryService ..> FirebaseStorage
+
+NotificationService ..> FlutterLocalNotificationsPlugin
+
+AccountService ..> FirebaseAuth
+AccountService ..> FirebaseFirestore
+
+BaseCommon ..> AccountService
+BaseCommon ..> SharedPreferences
+
+@enduml
